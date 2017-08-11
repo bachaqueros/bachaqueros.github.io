@@ -7,20 +7,46 @@
 
 <script src="https://code.jquery.com/jquery-git.js" type="text/javascript"></script>
 
-<script>
-       $(document).ready(function (){
-              console.log(':)')
-              console.log( navigator.userAgent )
-        if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
-            window.location.href = 'https://play.google.com/store/apps/details?id=com.danielsoto.bachacrush';
-        }
-        else if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
-            window.location.href = 'https://itunes.apple.com/us/app/bacha-crush-bachaqueros/id1257569202?mt=8';
-        }
-       else{
-            window.location.href = 'https://www.facebook.com/Bachacrush/';
-       }
-       });
+<script>  
+       $(document).ready( function (){
+           	var userLang = navigator.language || navigator.userLanguage;
+           	userLang = userLang.split("-");
+           
+			var title = "Proceed to the {0} ?";
+			if( userLang[0] == "es" ){
+				title = "Continuar a {0} ?";
+			}
+           
+		   	console.log(':)');
+		   	console.log( navigator.userAgent );
+		 	var url = 'https://www.facebook.com/Bachacrush/';
+		  	if(navigator.userAgent.toLowerCase().indexOf("android") > -1)
+			{
+				if( userLang[0] == "es" ){
+					title = String.format(title, "Google Play");
+				}
+				else title = String.format(title, "Google Play Store");
+			  	url = 'https://play.google.com/store/apps/details?id=com.danielsoto.bachacrush';
+		  	}
+		  	else if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1 ||
+				 	navigator.userAgent.toLowerCase().indexOf("ipod") > -1 ||
+				 	navigator.userAgent.toLowerCase().indexOf("ipad") > -1 )
+			{
+				if( userLang[0] == "es" ){
+					title = String.format(title, "la App Store");
+				}
+				else title = String.format(title, "App Store");
+				url = 'https://itunes.apple.com/us/app/bacha-crush-bachaqueros/id1257569202?mt=8';
+		  	}
+		   
+            if( confirm( title ) ){
+              document.write ("User wants to continue!");
+              window.location.href = url;
+            }
+            else{
+              document.write ("User does not want to continue!");
+            }
+		 });
 </script>
 <body>
 
