@@ -1,15 +1,25 @@
-<html>
-  <head>
-    <title>My Homepage</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bacha Crush</title>
+</head>
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<script>
+       $(document).ready(function (){
+       	console.log(':)')
+        if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+            window.location.href = 'https://play.google.com/store/apps/details?id=com.danielsoto.bachacrush';
+        }
+        if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
+            window.location.href = 'https://itunes.apple.com/us/app/bacha-crush-bachaqueros/id1257569202?mt=8';
+        }
+       });
+</script>
+<body>
 
 
-  <body>
-    <h1>My homepage!</h1>
-    
-    <h2>
-        ;)
-    </h2>
-
-  </body>
+</body>
 </html>
